@@ -5,8 +5,6 @@
 
 - 接口跨域解决来自JsonBird( [JsonBird](https://bird.ioliu.cn/) )
 
-建议在手机或F12手机模式下浏览
-
 ## 运行方法
 
 ``` bash
@@ -16,6 +14,7 @@ npm install
 npm run dev
 
 ```
+建议在手机或F12手机模式下浏览
 
 ## License
 
