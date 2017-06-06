@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'oneiconfont';
+    src: url('//at.alicdn.com/t/font_loej875bxcjl9pb9.woff') format('woff'),
+    url('//at.alicdn.com/t/font_loej875bxcjl9pb9.ttf') format('truetype');
+}
+
+a{text-decoration: underline;color:#1F58A0; }
+p{font-size: 16px;margin: 0 0 20px 0;line-height:32px; }
+
+.one-icon {
+    font-family:"oneiconfont" !important;
+    font-size:18px;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+.one-icon-addedtolist:before { content: "\e621"; }
+.one-icon-addtolist:before { content: "\e622"; }
+.one-icon-back:before { content: "\e623"; }
+.one-icon-chapter:before { content: "\e624"; }
+.one-icon-close:before { content: "\e625"; }
+.one-icon-camera:before { content: "\e626"; }
+.one-icon-download:before { content: "\e627"; }
+.one-icon-dilmed:before { content: "\e628"; }
+.one-icon-delete:before { content: "\e629"; }
+.one-icon-comment:before { content: "\e62a"; }
+.one-icon-feedback:before { content: "\e62b"; }
+.one-icon-film:before { content: "\e62c"; }
+.one-icon-filminfo:before { content: "\e62d"; }
+.one-icon-following:before { content: "\e630"; }
+.one-icon-imagetext:before { content: "\e631"; }
+.one-icon-last:before { content: "\e632"; }
+.one-icon-image:before { content: "\e633"; }
+.one-icon-info:before { content: "\e634"; }
+.one-icon-liked:before { content: "\e635"; }
+.one-icon-looplist:before { content: "\e636"; }
+.one-icon-looptrack:before { content: "\e637"; }
+.one-icon-like:before { content: "\e638"; }
+.one-icon-me:before { content: "\e639"; }
+.one-icon-more:before { content: "\e63a"; }
+.one-icon-next:before { content: "\e63b"; }
+.one-icon-music:before { content: "\e63c"; }
+.one-icon-musicinfo:before { content: "\e63d"; }
+.one-icon-musiced:before { content: "\e63e"; }
+.one-icon-pause:before { content: "\e63f"; }
+.one-icon-pausewithcircle:before { content: "\e688"; }
+.one-icon-note:before { content: "\e640"; }
+.one-icon-noghtmode:before { content: "\e641"; }
+.one-icon-play:before { content: "\e642"; }
+.one-icon-playwithcircle:before { content: "\e689"; }
+.one-icon-quote:before { content: "\e643"; }
+.one-icon-read:before { content: "\e644"; }
+.one-icon-search:before { content: "\e645"; }
+.one-icon-readed:before { content: "\e646"; }
+.one-icon-share:before { content: "\e648"; }
+.one-icon-setting:before { content: "\e649"; }
+.one-icon-thumb:before { content: "\e64b"; }
+.one-icon-thumbed:before { content: "\e64c"; }
+.one-icon-orderplay:before { content: "\e658"; }
+.one-icon-voice:before { content: "\e659"; }
+.one-icon-next1:before { content: "\e65a"; }
+.one-icon-menu:before { content: "\e65b"; }
+.one-icon-message:before { content: "\e65c"; }
+.one-icon-collect:before { content: "\e65d"; }
+.one-icon-collected:before { content: "\e65e"; }
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0;}
+fieldset,img {border:0}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal}
+ol,ul {list-style:none}
+caption,th {text-align:left}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal}
+q:before,q:after {content:''}
+abbr,acronym { border:0}
+/*基本色*/
+$g1:#3cb9b2;
+$g2:#6666FF;
+$y1:#f39800;
+$r1:#f97373;
+$p1:#32574f;
+$b1:#505050;
+$b2:#989898;
+$b3:#d3d3d3;
+$b4:#f0f4f4;
+$b5:#f18e02;
+$b6:#6666FF;
