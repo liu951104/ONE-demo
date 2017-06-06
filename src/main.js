@@ -3,11 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import Vuex from 'vuex'
+import axios from 'axios'
 import VueRouter from 'vue-router'
 import router from './router'
 
 Vue.use( Vuex )
 Vue.use( VueRouter )
+Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
 

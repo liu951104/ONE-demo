@@ -2,8 +2,7 @@
   <div id="app">
     <header class="header">
       <i v-if="!flag" class="one-icon one-icon-menu menu" @click="allToggle()"></i>
-  		<!-- <i v-if="!flag" class="iconfont icon-ic_menu" @click="toggle(true)"></i>
-  		<i v-if="flag" class="iconfont icon-ic_back" @click="back()"></i> -->
+  		<h5>一个</h5>
   	</header>
     <aside class="aside" :class="{open:open,docked:docked}" @click="allToggle()">
   		<ul>
@@ -42,6 +41,7 @@
 </template>
 
 <script>
+import api from './api/index'
 export default {
   data() {
 		return {
@@ -49,19 +49,22 @@ export default {
 			open: false,
 			docked: false,
       flag:false,
+      todayId:0,
 			transitionName: 'slide-left'
 		}
 	},
+  created(){
+    api.getIdList().then(res =>
+      this.todayId = res.data.data[0]
+    )
+
+  },
 	watch: {
 		'$route' (to, from) {
 			this.transitionName = to.path != "/article" ? 'slide-right' : 'slide-left';
 		}
 	},
   methods: {
-		back() {
-      console.log("123")
-			window.history.back()
-		},
     allToggle() {
 			if (!this.open) {
 				this.docked = true;
@@ -73,7 +76,10 @@ export default {
 					vue.docked = false;
 				}, 300);
 			}
-		}
+		},
+    getOneList:function(id){
+
+    }
 	}
 }
 </script>
@@ -119,8 +125,18 @@ export default {
     text-align: left;
     line-height: 7vh;
     z-index: 9;
-    padding-left: 5%;
+    // padding-left: 5%;
     position: fixed;
+    h5{
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      top:0;
+      letter-spacing: 5px;
+
+    }
 }
 .aside {
     z-index: 11;
@@ -164,10 +180,6 @@ export default {
         text-shadow: none;
         font-weight: lighter;
         margin-top: 25px;
-        .iconfont {
-            float: right;
-            font-size: 0.6rem;
-        }
         &.chose {
             color: #FFD300;
         }
