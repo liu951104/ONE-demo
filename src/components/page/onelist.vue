@@ -46,17 +46,13 @@ export default {
       let now = this.$moment(t-page*2592e6).format('YYYY-MM-DD')
       let url = 'http://v3.wufazhuce.com:8000/api/hp/bymonth/'+now+'%2000:00:00?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=ios'
       this.$http.get('https://bird.ioliu.cn/v1/?url='+url+'').then((res) => {
-        console.log(res.data.data)
         this.List = this.List.concat(res.data.data);
-        console.log(this.List)
         this.loading = false;
       })
     },
     toDetail(id,idx){
       // console.log(id,idx)
       this.$store.commit('getobj',this.List[idx]);
-
-      console.log(this.$store.state)
       this.$router.push({ path: 'detail', query: { itemId: id }})
     }
 	}

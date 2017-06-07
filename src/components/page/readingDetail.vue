@@ -30,9 +30,7 @@ export default {
 	},
   created(){
     let self = this;
-    console.log(this.$route)
     api.getReadingDetail(this.$route.query.id,this.$route.query.sid).then(function(res){
-      console.log(res.data.data)
       self.Reading = res.data.data
       self.loading = false;
     })
