@@ -26,6 +26,8 @@ export default {
 			docked: false,
       loading:true,
       flag:false,
+      now:'',
+      page:0,
       todayId:0,
 			transitionName: 'slide-left'
 		}
@@ -36,12 +38,13 @@ export default {
     })
   },
   created(){
-    let self = this;
-    self.getOneList()
+    this.getOneList(this.page)
   },
   methods: {
-    getOneList:function(){
-      let url = 'http://v3.wufazhuce.com:8000/api/hp/bymonth/2017-06-01%2000:00:00?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=ios'
+    getOneList:function(page){
+      const t = new Date().getTime();
+      let now = this.$moment(t-page*2592e6).format('YYYY-MM-DD')
+      let url = 'http://v3.wufazhuce.com:8000/api/hp/bymonth/'+now+'%2000:00:00?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=ios'
       this.$http.get('https://bird.ioliu.cn/v1/?url='+url+'').then((res) => {
         console.log(res.data.data)
         this.List = this.List.concat(res.data.data);

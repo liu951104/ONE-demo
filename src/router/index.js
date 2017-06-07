@@ -14,5 +14,13 @@ export default new Router({
 			path: '/detail',
 			component: resolve => require(['../components/page/onedetail.vue'], resolve)
 		},
+    {
+			path: '/read',
+			component: resolve => require(['../components/page/readList.vue'], resolve)
+		},
+    {
+			path: '/readDetail',
+			component: resolve => require(['../components/page/readingDetail.vue'], resolve)
+		}
   ]
 })

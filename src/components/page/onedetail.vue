@@ -7,13 +7,14 @@
         <li>{{Detail.hp_author}}|{{Detail.image_authors}}</li>
       </ul>
       <div class="time-box">
-        <time class="day">{{new Date(Detail.hp_makettime.replace(/\-/g,"\/")).getDate()}}</time>
-        <time class="monthYear">{{new Date(Detail.hp_makettime.replace(/\-/g,"\/")).getMonth()+1}}.{{new Date(Detail.hp_makettime.replace(/\-/g,"\/")).getFullYear()}}</time>
+        <time class="day">{{$moment(Detail.hp_makettime.replace(/\-/g,"\/")).format('DD')}}</time>
+        <time class="monthYear">{{$moment(Detail.hp_makettime.replace(/\-/g,"\/")).format('MMM')}}.{{$moment(Detail.hp_makettime.replace(/\-/g,"\/")).format('YYYY')}}</time>
       </div>
       <div class="separate-line"></div>
       <p>{{Detail.hp_content}}</p>
 
     </div>
+    <footer-download></footer-download>
     <!-- 加载中 -->
     <!-- <loading :loading="loading" /> -->
   </div>
@@ -21,7 +22,7 @@
 
 <script>
 import api from '../../api/index'
-import { mapState } from 'vuex'
+import Download from '../common/download'
 export default {
   data() {
 		return {
@@ -34,10 +35,8 @@ export default {
 			transitionName: 'slide-left'
 		}
 	},
-  computed: {
-    ...mapState({
-      detail : state => state.detail
-    })
+  components: {
+    footerDownload:Download
   },
   created(){
     // this.getOneDetail(this.$route.query.itemId)
@@ -51,16 +50,6 @@ export default {
 
   },
   methods: {
-    getOneDetail:function(id){
-      this.$http.get('https://bird.ioliu.cn/v1/?url=http://v3.wufazhuce.com:8000/api/essay/'+id+'?channel=wdj&source=summary&source_id=9261&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android').then((res) => {
-        console.log(res)
-        this.Detail = res.data.data;
-        this.loading = false;
-      })
-    },
-    toDetail(id){
-      console.log(id)
-    },
     /**
      * 判断对象是否为空
      */
@@ -74,12 +63,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .detail-box{
     background: #fff;
     height: 100%;
     width: 100%;
-    padding-bottom: 20px;
   }
   .detail-content{
     font-size: 16px;
@@ -87,6 +75,8 @@ export default {
     background: #fff;
     overflow-x: hidden;
     text-align: justify;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
     img{
       width: 100%;
     }

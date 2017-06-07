@@ -10,6 +10,9 @@ import router from './router'
 import loading from './components/common/loading'
 Vue.component( loading.name, loading )
 
+import moment from 'moment';
+Object.defineProperty(Vue.prototype, '$moment', { value: moment });
+
 Vue.use( Vuex )
 Vue.use( VueRouter )
 Vue.prototype.$http = axios
