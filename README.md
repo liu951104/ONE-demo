@@ -8,8 +8,7 @@
 ## 其它
 > node-sass 安装出错
 > node-sass在国内网络下安装很容易出错，可参考[https://github.com/lmk123/blog/issues/28](https://github.com/lmk123/blog/issues/28 "https://github.com/lmk123/blog/issues/28")
-  
-  或换成淘宝源 $ cnpm i node-sass
+> 或换成淘宝源 $ cnpm i node-sass
 
 ## 运行方法
 
