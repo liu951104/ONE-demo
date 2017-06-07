@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <header class="header">
-      <i v-if="!flag" class="one-icon one-icon-menu menu" @click="allToggle()"></i>
+      <i v-if="!flag" class="o-icon o-icon-menu menu" @click="allToggle()"></i>
   		<h5>一个</h5>
   	</header>
     <aside class="aside" :class="{open:open,docked:docked}" @click="allToggle()">
   		<ul>
-  			<li>
+  			<li @click="change('/')">
   				<span>图文</span>
   			</li>
-        <li>
+        <li @click="change('/read')">
   				<span>阅读</span>
   			</li>
         <li>
@@ -21,27 +21,21 @@
         <li>
   				<span>关于</span>
   			</li>
-  			<!-- <li :class="{chose:num == index+2}" v-for="(x, index) in list" @click="change(index+2,x.id)">
-  				<span>{{x.name}}</span>
-  				<i class="iconfont " :class="{'iconcolor icon-ic_star_black':num == index+2,'icon-ic_star':num != index+2}" />
-  			</li>
   			<li @click="jump()">
   				<span>项目地址</span>
-  				<i class="iconfont icon-github" />
-  			</li> -->
+  			</li>
   		</ul>
   		<!-- <div class="cover" @touchmove="prevent"></div> -->
   	</aside>
     <transition :name="transitionName">
-  		<keep-alive>
-  			<router-view class="app-view" :class="{'app-view-hidden':docked}"></router-view>
-  		</keep-alive>
+  		<router-view class="app-view" :class="{'app-view-hidden':docked}"></router-view>
   	</transition>
   </div>
 </template>
 
 <script>
 import api from './api/index'
+
 export default {
   data() {
 		return {
@@ -53,6 +47,7 @@ export default {
 			transitionName: 'slide-left'
 		}
 	},
+
   created(){
     api.getIdList().then(res =>
       this.todayId = res.data.data[0]
@@ -77,8 +72,11 @@ export default {
 				}, 300);
 			}
 		},
-    getOneList:function(id){
-
+    jump(){
+      location.href = 'https://github.com/liu951104/ONE-demo';
+    },
+    change(path){
+      this.$router.push(path)
     }
 	}
 }
@@ -110,6 +108,7 @@ export default {
     height: 93vh;
     margin-top: 7vh;
     background: #f0f4f4;
+    font-size: 20px;
     overflow: auto;
     position: absolute;
     transition: transform 0.3s ease;
@@ -184,14 +183,6 @@ export default {
             color: #FFD300;
         }
     }
-    .cover {
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        display: none;
-        background: rgba(172,185,201,0.40);
-        transition: opacity 0.3s ease;
-    }
     &.open {
         ul {
             transform: translate(0);
@@ -207,25 +198,6 @@ export default {
         }
     }
 
-}
-.circle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.80);
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
-    right: 5%;
-    bottom: 5vw;
-    position: fixed;
-    z-index: 10;
-    i {
-        top: 50%;
-        left: 50%;
-        font-size: 0.6rem;
-        color: #ACB9C9;
-        transform: translate(-50%, -50%);
-        position: absolute;
-    }
 }
 @media screen and (min-width: 640px) {
     .app-view {

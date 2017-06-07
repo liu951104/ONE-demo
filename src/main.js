@@ -7,6 +7,9 @@ import axios from 'axios'
 import VueRouter from 'vue-router'
 import router from './router'
 
+import loading from './components/common/loading'
+Vue.component( loading.name, loading )
+
 Vue.use( Vuex )
 Vue.use( VueRouter )
 Vue.prototype.$http = axios
@@ -15,12 +18,11 @@ Vue.config.productionTip = false
 
 const store = new Vuex.Store( {
 	state: {
-		num: 1,
-		drawer: false,
-		circleFlag: false
+		showloading:false,
+		detail:{}
 	},
 	mutations: {
-		add: ( state, n ) => state.num = n,
+		getobj: ( state, n ) => state.detail = n,
 		back( state, n ) { //列表、返回按钮切换
 			if ( n ) {
 				state.drawer = false

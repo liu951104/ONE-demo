@@ -8,8 +8,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
-    }
+      component: resolve => require(['../components/page/onelist.vue'], resolve)
+    },
+    {
+			path: '/detail',
+			component: resolve => require(['../components/page/onedetail.vue'], resolve)
+		},
   ]
 })
