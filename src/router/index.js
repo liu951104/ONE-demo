@@ -29,6 +29,14 @@ export default new Router({
     {
 			path: '/musicDetail',
 			component: resolve => require(['../components/page/musicDetail.vue'], resolve)
+		},
+    {
+			path: '/movie',
+			component: resolve => require(['../components/page/movieList.vue'], resolve)
+		},
+    {
+			path: '/movieDetail',
+			component: resolve => require(['../components/page/movieDetail.vue'], resolve)
 		}
   ]
 })

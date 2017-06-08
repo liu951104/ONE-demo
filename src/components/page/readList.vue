@@ -38,7 +38,7 @@ export default {
   created(){
     let self = this;
     api.getReadingList().then(function(res){
-      console.log(res.data.data)
+      // console.log(res.data.data)
       self.List = res.data.data;
       self.loading = false;
     })

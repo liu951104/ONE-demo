@@ -22,10 +22,12 @@ Vue.config.productionTip = false
 const store = new Vuex.Store( {
 	state: {
 		showloading:false,
+		movie:{},
 		detail:{}
 	},
 	mutations: {
 		getobj: ( state, n ) => state.detail = n,
+		getmovie: ( state, n ) => state.movie = n,
 		back( state, n ) { //列表、返回按钮切换
 			if ( n ) {
 				state.drawer = false

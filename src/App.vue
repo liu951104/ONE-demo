@@ -15,7 +15,7 @@
         <li @click="change('/music')">
   				<span>音乐</span>
   			</li>
-        <li>
+        <li @click="change('/movie')">
   				<span>影视</span>
   			</li>
         <li>
@@ -53,9 +53,8 @@ export default {
   },
 	watch: {
     '$route' (to, from) {
-      const toDepth = to.path.split('/').length
-      const fromDepth = from.path.split('/').length
-      console.log(toDepth,fromDepth)
+      const toDepth = to.path.split('/').length;
+      const fromDepth = from.path.split('/').length;
       this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
     }
 	},

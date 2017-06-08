@@ -24,5 +24,11 @@ export default {
   },
   getMusicDetail(id){
     return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/music/detail/'+id+'?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')
+  },
+  getMovieList(id){
+    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/channel/movie/more/'+id+'?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')
+  },
+  getMovieDetail(id){
+    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/movie/'+id+'/story/1/0?version=4.0.2&platform=android')
   }
 }
