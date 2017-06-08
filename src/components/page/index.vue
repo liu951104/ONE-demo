@@ -17,7 +17,7 @@
 
 <script>
 import api from '../../api/index'
-var timeout;
+var timeinter,timeout;
 export default {
   data() {
 		return {
@@ -35,6 +35,13 @@ export default {
       self.getOne(self.todayId);
     })
   },
+  beforeRouteLeave (to, from, next) {
+    // 导航离开该组件的对应路由时调用
+    if(this.count > 0){
+      clearTimeout(timeout)
+    }
+    next()
+  },
   methods: {
     interval(){
       timeout = setInterval(() => {
@@ -48,8 +55,8 @@ export default {
         self.IndexObj = res.data.data.content_list[0];
         self.loading = false;
         self.interval();
-        setTimeout(() => {
-          clearInterval(timeout);
+        timeout = setTimeout(() => {
+          clearInterval(timeinter);
           self.$router.push('/one')
         },3000)
       })
