@@ -9,7 +9,8 @@
       <p class="list-content">{{detail.hp_content}}</p>
       <span class="list-word-info">{{detail.text_authors}}</span>
     </div>
-
+    <!-- 滑动加载更多组件 -->
+	  <scroll-more :scroller="scroller" :loading="moreLoading" @load="loadMore" />
     <!-- 加载中 -->
     <loading :loading="loading" />
   </div>
@@ -25,6 +26,8 @@ export default {
 			open: false,
 			docked: false,
       loading:true,
+      moreLoading:false,
+      scroller:null,
       flag:false,
       now:'',
       page:0,
@@ -37,15 +40,17 @@ export default {
       detail : state => state.detail
     })
   },
-  created(){
-    let self = this;
-    self.getOneList(0)
-    // api.getIdList().then(function(res){
-    //   self.idList = res.data.data;
-    //   self.getOneList(0)
-    // })
+  mounted(){
+    this.page = 0;
+    this.scroller = this.$el
+    this.getOneList(0)
+
   },
   methods: {
+    loadMore(){
+      this.moreLoading = true
+      this.getOneList(this.page)
+    },
     getOneList:function(page){
       // let id = this.idList[page]
       const t = new Date().getTime();
@@ -53,7 +58,9 @@ export default {
       let url = 'http://v3.wufazhuce.com:8000/api/hp/bymonth/'+now+'%2000:00:00?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=ios'
       this.$http.get('https://bird.ioliu.cn/v1/?url='+url+'').then((res) => {
         this.List = this.List.concat(res.data.data);
+        this.moreLoading = false;
         this.loading = false;
+        this.page++;
       })
 
       // api.getOneList(id).then(function(res){

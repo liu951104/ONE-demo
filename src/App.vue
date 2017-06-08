@@ -6,7 +6,7 @@
   	</header>
     <aside class="aside" :class="{open:open,docked:docked}" @click="allToggle()">
   		<ul>
-  			<li @click="change('/')">
+  			<li @click="change('/one')">
   				<span>图文</span>
   			</li>
         <li @click="change('/read')">

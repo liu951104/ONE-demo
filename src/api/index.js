@@ -13,8 +13,8 @@ export default {
   getOneList(id){
     return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/onelist/'+id+'/0?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')
   },
-  getReadingList(){
-    return axios.get(DEFAULT + API.readinglist);
+  getReadingList(id){
+    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/channel/reading/more/'+id+'?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android');
   },
   getReadingDetail(id,sid){
     return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/essay/'+id+'?channel=wdj&source=channel_reading&source_id='+sid+'&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')

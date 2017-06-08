@@ -8,7 +8,9 @@ import VueRouter from 'vue-router'
 import router from './router'
 
 import loading from './components/common/loading'
+import scrollMore from './components/common/scrollMore'
 Vue.component( loading.name, loading )
+Vue.component( scrollMore.name, scrollMore )
 
 import moment from 'moment';
 Object.defineProperty(Vue.prototype, '$moment', { value: moment });
@@ -27,21 +29,7 @@ const store = new Vuex.Store( {
 	},
 	mutations: {
 		getobj: ( state, n ) => state.detail = n,
-		getmovie: ( state, n ) => state.movie = n,
-		back( state, n ) { //列表、返回按钮切换
-			if ( n ) {
-				state.drawer = false
-			} else {
-				state.drawer = true
-			}
-		},
-		toggle( state, n ) {
-			if ( n ) {
-				state.circleFlag = true
-			} else {
-				state.circleFlag = false
-			}
-		}
+		getmovie: ( state, n ) => state.movie = n
 	}
 } )
 

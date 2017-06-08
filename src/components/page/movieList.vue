@@ -12,7 +12,8 @@
       <p class="movie-subtitle">——关于《{{detail.subtitle}}》</p>
       <time>{{$moment(detail.post_date.replace(/\-/g,"\/")).format('YYYY/MM/DD')}}</time>
     </div>
-
+    <!-- 滑动加载更多组件 -->
+	  <scroll-more :scroller="scroller" :loading="moreLoading" @load="loadMore" />
     <!-- 加载中 -->
     <loading :loading="loading" />
   </div>
@@ -28,6 +29,8 @@ export default {
 			open: false,
 			docked: false,
       loading:true,
+      moreLoading:false,
+      scroller: null,
       flag:false,
       now:'',
       page:0,
@@ -40,17 +43,24 @@ export default {
       movieUrl : state => state.movieUrl
     })
   },
-  created(){
+  mounted(){
     let self = this;
+    this.scroller = this.$el;
+
     self.getMovieList(0)
   },
   methods: {
+    loadMore(){
+      this.moreLoading = true;
+      this.getMovieList(this.mId)
+    },
     getMovieList:function(id){
       let self = this;
       api.getMovieList(id).then(function(res){
         // console.log(res.data.data.length - 1)
         self.mId = res.data.data[res.data.data.length - 1].id
         self.List = self.List.concat(res.data.data);
+        self.moreLoading = false;
         self.loading = false;
       })
     },

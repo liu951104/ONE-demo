@@ -15,7 +15,8 @@
       <p class="music-forward">{{detail.forward}}</p>
       <time>{{$moment(detail.post_date.replace(/\-/g,"\/")).format('YYYY/MM/DD')}}</time>
     </div>
-
+    <!-- 滑动加载更多组件 -->
+	  <scroll-more :scroller="scroller" :loading="moreLoading" @load="loadMore" />
     <!-- 加载中 -->
     <loading :loading="loading" />
   </div>
@@ -31,24 +32,30 @@ export default {
 			docked: false,
       loading:true,
       flag:false,
+      scroller:null,
+      moreLoading:false,
       now:'',
       page:0,
       mId:0,
 			transitionName: 'slide-left'
 		}
 	},
-  created(){
+  mounted(){
     let self = this;
+    this.scroller = this.$el;
     self.getMusicList(0)
   },
   methods: {
+    loadMore(){
+      this.moreLoading = true
+      this.getMusicList(this.mId);
+    },
     getMusicList:function(id){
       let self = this;
       api.getMusicList(id).then(function(res){
-        // console.log(res.data.data.length - 1)
         self.mId = res.data.data[res.data.data.length - 1].id
-        // console.log(self.mId)
         self.List = self.List.concat(res.data.data);
+        self.moreLoading = false;
         self.loading = false;
       })
     },

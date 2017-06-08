@@ -1,6 +1,5 @@
 <template>
   <div class="">
-
     <div class="list-box" v-for="detail in List" @click="toDetail(detail.item_id,detail.id)">
       <h6 class="text-tag">- {{detail.tag_list.length == 0?'阅读':detail.tag_list[0].title}} -</h6>
       <h4 class="reading-title">{{detail.title}}</h4>
@@ -9,7 +8,8 @@
       <p class="reading-forward">{{detail.forward}}</p>
       <time>{{$moment(detail.post_date).format('YYYY/MM/DD')}}</time>
     </div>
-
+    <!-- 滑动加载更多组件 -->
+	  <scroll-more :scroller="scroller" :loading="moreLoading" @load="loadMore" />
     <!-- 加载中 -->
     <loading :loading="loading" />
   </div>
@@ -25,8 +25,10 @@ export default {
 			open: false,
 			docked: false,
       loading:true,
+      moreLoading:false,
+      scroller:null,
       flag:false,
-      todayId:0,
+      rId:0,
 			transitionName: 'slide-left'
 		}
 	},
@@ -35,18 +37,25 @@ export default {
       detail : state => state.detail
     })
   },
-  created(){
-    let self = this;
-    api.getReadingList().then(function(res){
-      // console.log(res.data.data)
-      self.List = res.data.data;
-      self.loading = false;
-    })
-
+  mounted(){
+    this.scroller = this.$el;
+    this.getReadList(0)
   },
   methods: {
+    loadMore(){
+      this.moreLoading = true;
+      this.getReadList(this.rId);
+    },
+    getReadList(id){
+      let self = this;
+      api.getReadingList(id).then(function(res){
+        self.rId = res.data.data[res.data.data.length - 1].id;
+        self.List = self.List.concat(res.data.data);
+        self.moreLoading = false;
+        self.loading = false;
+      })
+    },
     toDetail(id,sid){
-      console.log(id,sid)
       this.$router.push({ path: 'readDetail', query: { id: id,sid:sid}})
     }
 	}
