@@ -12,7 +12,7 @@
         <li @click="change('/read')">
   				<span>阅读</span>
   			</li>
-        <li>
+        <li @click="change('/music')">
   				<span>音乐</span>
   			</li>
         <li>
@@ -49,15 +49,15 @@ export default {
 	},
 
   created(){
-    api.getIdList().then(res =>
-      this.todayId = res.data.data[0]
-    )
 
   },
 	watch: {
-		'$route' (to, from) {
-			this.transitionName = to.path != "/article" ? 'slide-right' : 'slide-left';
-		}
+    '$route' (to, from) {
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      console.log(toDepth,fromDepth)
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    }
 	},
   methods: {
     allToggle() {
@@ -113,7 +113,15 @@ export default {
     position: absolute;
     transition: transform 0.3s ease;
     -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar {
+        display: none!important;
+        width: 0!important;
+        height: 0!important;
+        -webkit-appearance: none;
+        opacity: 0!important;
+    }
 }
+
 .app-view-hidden {
     overflow: hidden;
 }
@@ -175,7 +183,7 @@ export default {
     li {
         cursor: pointer;
         font-size: 16px;
-        color: rgba(0, 0, 0, 0.6);
+        color: rgba(0, 0, 0, 0.9);
         text-shadow: none;
         font-weight: lighter;
         margin-top: 25px;

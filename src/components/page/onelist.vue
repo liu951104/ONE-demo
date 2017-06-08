@@ -2,7 +2,7 @@
   <div class="">
 
     <div class="list-box" v-for="(detail,index) in List" @click="toDetail(detail.hpcontent_id,index)">
-      <time>{{new Date(detail.hp_makettime.replace(/\-/g,"\/")).getFullYear()}} / {{new Date(detail.hp_makettime.replace(/\-/g,"\/")).getMonth()+1}} / {{new Date(detail.hp_makettime.replace(/\-/g,"\/")).getDate()}}</time>
+      <time>{{$moment(detail.hp_makettime.replace(/\-/g,"\/")).format('YYYY')}} / {{$moment(detail.hp_makettime.replace(/\-/g,"\/")).format('MM')}} / {{$moment(detail.hp_makettime.replace(/\-/g,"\/")).format('DD')}}</time>
       <p class="list-hp-title">{{detail.hp_title}}</p>
       <img :src="detail.hp_img_url" alt="" class="list-img">
       <h6 class="list-name">{{detail.hp_author}}|{{detail.image_authors}}</h6>
@@ -28,7 +28,7 @@ export default {
       flag:false,
       now:'',
       page:0,
-      todayId:0,
+      idList:[],
 			transitionName: 'slide-left'
 		}
 	},
@@ -38,10 +38,16 @@ export default {
     })
   },
   created(){
-    this.getOneList(this.page)
+    let self = this;
+    self.getOneList(0)
+    // api.getIdList().then(function(res){
+    //   self.idList = res.data.data;
+    //   self.getOneList(0)
+    // })
   },
   methods: {
     getOneList:function(page){
+      // let id = this.idList[page]
       const t = new Date().getTime();
       let now = this.$moment(t-page*2592e6).format('YYYY-MM-DD')
       let url = 'http://v3.wufazhuce.com:8000/api/hp/bymonth/'+now+'%2000:00:00?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=ios'
@@ -49,6 +55,11 @@ export default {
         this.List = this.List.concat(res.data.data);
         this.loading = false;
       })
+
+      // api.getOneList(id).then(function(res){
+      //   console.log(res.data.data)
+      //   this.List = this.List.concat(res.data.data);
+      // })
     },
     toDetail(id,idx){
       // console.log(id,idx)

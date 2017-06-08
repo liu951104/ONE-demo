@@ -28,13 +28,13 @@ export default {
       background-color: #fff;
       display: block;
       margin: 0;
-      width: 2.75em;
-      height: 2.75em;
+      width: 2.5em;
+      height: 2.5em;
       padding: .0625em;
       -webkit-border-radius: 2.25em;
       border-radius: 2.25em;
       background: url(../../assets/ajax-loader.gif);
-      background-size: 2.875em 2.875em;
+      background-size: 2.575em 2.575em;
       opacity: 0.1;
       position: absolute;
       top:0;

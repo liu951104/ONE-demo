@@ -3,7 +3,7 @@
     <div class="text-box">
       <h1 class="text-title">{{Reading.hp_title}}</h1>
       <hr class="sort-line">
-      <h6 class="text-author">文 / {{Reading.author[0].user_name}}</h6>
+      <h6 class="text-author">文 / {{Reading.author?Reading.author[0].user_name:""}}</h6>
       <div class="text-content" v-html="Reading.hp_content"></div>
     </div>
 
@@ -58,7 +58,7 @@ export default {
     background: #fff;
     height: 100%;
     width: 100%;
-    padding:0 20px 0;
+    padding: 0 1em;
     box-sizing: border-box;
     .text-box{
       padding-bottom: 20px;
@@ -89,6 +89,7 @@ export default {
         p{
           font-family: sans-serif;
           font-size: 18px;
+          line-height: 28px;
           text-align: justify;
         }
         img{
