@@ -18,7 +18,7 @@
         <li @click="change('/movie')">
   				<span>影视</span>
   			</li>
-        <li>
+        <li @click="change('/about')">
   				<span>关于</span>
   			</li>
   			<li @click="jump()">

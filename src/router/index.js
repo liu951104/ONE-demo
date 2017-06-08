@@ -11,6 +11,10 @@ export default new Router({
       component: resolve => require(['../components/page/onelist.vue'], resolve)
     },
     {
+      path: '/about',
+      component: resolve => require(['../components/page/about.vue'], resolve)
+    },
+    {
 			path: '/detail',
 			component: resolve => require(['../components/page/onedetail.vue'], resolve)
 		},
