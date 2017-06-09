@@ -1,34 +1,41 @@
 import axios from 'axios'
 
-const DEFAULT = 'https://bird.ioliu.cn/v1/?url='
-const API = {
-  idlist:'http://v3.wufazhuce.com:8000/api/onelist/idlist/?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android',
-  readinglist:'http://v3.wufazhuce.com:8000/api/channel/reading/more/0?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android'
-}
+import {
+  _DEFAULT,
+  _STORY,
+  ID,
+  ONE_LIST,
+  READ_LIST,
+  READ_DETAIL,
+  MUSIC_LIST,
+  MUSIC_DETAIL,
+  MOVIE_LIST,
+  MOVIE_DETAIL,
+} from './resource'
 
 export default {
 	getIdList() {
-		return axios.get(DEFAULT + API.idlist);
+		return axios.get(ID);
 	},
   getOneList(id){
-    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/onelist/'+id+'/0?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')
+    return axios.get(ONE_LIST + id + '/0' + _DEFAULT);
   },
   getReadingList(id){
-    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/channel/reading/more/'+id+'?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android');
+    return axios.get(READ_LIST + id + _DEFAULT);
   },
   getReadingDetail(id,sid){
-    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/essay/'+id+'?channel=wdj&source=channel_reading&source_id='+sid+'&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')
+    return axios.get(READ_DETAIL + id + _DEFAULT + '&source_id='+sid+'');
   },
   getMusicList(id){
-    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/channel/music/more/'+id+'?channel=wdj&version=4.2.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')
+    return axios.get(MUSIC_LIST + id + _DEFAULT)
   },
   getMusicDetail(id){
-    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/music/detail/'+id+'?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')
+    return axios.get(MUSIC_DETAIL + id + _DEFAULT)
   },
   getMovieList(id){
-    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/channel/movie/more/'+id+'?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android')
+    return axios.get(MOVIE_LIST + id + _DEFAULT)
   },
   getMovieDetail(id){
-    return axios.get(DEFAULT + 'http://v3.wufazhuce.com:8000/api/movie/'+id+'/story/1/0?version=4.0.2&platform=android')
+    return axios.get(MOVIE_DETAIL + id + _STORY)
   }
 }

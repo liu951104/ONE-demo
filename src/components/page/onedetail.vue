@@ -1,5 +1,6 @@
 <template>
   <div class="detail-box">
+    <v-title>详情 | {{Detail.hp_title}}</v-title>
     <div class="detail-content">
       <img :src="Detail.hp_img_url" alt="">
       <ul>

@@ -1,24 +1,25 @@
 <template>
   <div id="app">
+    <v-title>一个{{barTitle}}</v-title>
     <header class="header">
       <i v-if="!flag" class="o-icon o-icon-menu menu" @click="allToggle()"></i>
-  		<h5>一个</h5>
+  		<h5>一个{{$route.path == '/one' ? '图文' : barTitle}}</h5>
   	</header>
     <aside class="aside" :class="{open:open,docked:docked}" @click="allToggle()">
   		<ul>
-  			<li @click="change('/one')">
+  			<li @click="change('/one','图文')">
   				<span>图文</span>
   			</li>
-        <li @click="change('/read')">
+        <li @click="change('/read','阅读')">
   				<span>阅读</span>
   			</li>
-        <li @click="change('/music')">
+        <li @click="change('/music','音乐')">
   				<span>音乐</span>
   			</li>
-        <li @click="change('/movie')">
+        <li @click="change('/movie','影视')">
   				<span>影视</span>
   			</li>
-        <li @click="change('/about')">
+        <li @click="change('/about','关于')">
   				<span>关于</span>
   			</li>
   			<li @click="jump()">
@@ -42,6 +43,7 @@ export default {
 			list: [],
 			open: false,
 			docked: false,
+      barTitle:'',
       flag:false,
       todayId:0,
 			transitionName: 'slide-left'
@@ -74,7 +76,8 @@ export default {
     jump(){
       location.href = 'https://github.com/liu951104/ONE-demo';
     },
-    change(path){
+    change(path,title){
+      this.barTitle = title;
       this.$router.push(path)
     }
 	}

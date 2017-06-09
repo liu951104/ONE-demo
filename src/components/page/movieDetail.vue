@@ -1,5 +1,6 @@
 <template>
   <div class="movie-detail-box">
+    <v-title>详情 | {{Movie.title}}</v-title>
     <div class="movie-top-bg" :style="{backgroundImage:'url('+ imgUrl +')'}"></div>
     <div class="movie-box">
       <h1 class="movie-title">{{Movie.title}}</h1>

@@ -1,5 +1,6 @@
 <template>
   <div class="reading-detail-box">
+    <v-title>详情 | {{Reading.hp_title}}</v-title>
     <div class="text-box">
       <h1 class="text-title">{{Reading.hp_title}}</h1>
       <hr class="sort-line">

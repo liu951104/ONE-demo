@@ -62,11 +62,6 @@ export default {
         this.loading = false;
         this.page++;
       })
-
-      // api.getOneList(id).then(function(res){
-      //   console.log(res.data.data)
-      //   this.List = this.List.concat(res.data.data);
-      // })
     },
     toDetail(id,idx){
       // console.log(id,idx)

@@ -9,8 +9,10 @@ import router from './router'
 
 import loading from './components/common/loading'
 import scrollMore from './components/common/scrollMore'
+import Title from './components/common/title'
 Vue.component( loading.name, loading )
 Vue.component( scrollMore.name, scrollMore )
+Vue.component('vTitle',Title)
 
 import moment from 'moment';
 Object.defineProperty(Vue.prototype, '$moment', { value: moment });
@@ -23,7 +25,6 @@ Vue.config.productionTip = false
 
 const store = new Vuex.Store( {
 	state: {
-		showloading:false,
 		movie:{},
 		detail:{}
 	},
