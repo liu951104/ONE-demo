@@ -67,6 +67,7 @@ export default {
     height: 100%;
     width: 100%;
     padding: 0 1em;
+    padding-bottom: 4vh;
     box-sizing: border-box;
     .music-box{
       padding-bottom: 20px;

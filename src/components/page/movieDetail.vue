@@ -82,6 +82,7 @@ export default {
     background: #fff;
     height: 100%;
     width: 100%;
+    padding-bottom: 4vh;
     .movie-top-bg{
       width: 100%;
       height: 10em;

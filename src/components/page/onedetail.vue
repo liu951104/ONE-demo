@@ -68,6 +68,7 @@ export default {
     background: #fff;
     height: 100%;
     width: 100%;
+    padding-bottom: 4vh;
   }
   .detail-content{
     font-size: 16px;

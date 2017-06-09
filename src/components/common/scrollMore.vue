@@ -47,7 +47,7 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-bottom: 8px;
+	padding-bottom: 7vh;
 	line-height: 36px;
 	width: 100%;
 }
@@ -64,7 +64,7 @@ export default {
 .loader-path {
 	stroke-dasharray: 1, 200;
 	stroke-dashoffset: 0;
-	animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+	animation: dash 0.5s ease-in-out infinite, color 3s ease-in-out infinite;
 	stroke-linecap: round;
 }
 .loader-circular {
@@ -83,8 +83,14 @@ export default {
 	from {
 		transform: rotate(0deg);
 	}
+	30% {
+		transform: rotate(90deg);
+	}
 	50% {
 		transform: rotate(180deg);
+	}
+	76% {
+		transform: rotate(270deg);
 	}
 	to {
 		transform: rotate(360deg);
@@ -96,9 +102,17 @@ export default {
 		stroke-dasharray: 1, 200;
 		stroke-dashoffset: 0;
 	}
+	30% {
+		stroke-dasharray: 39, 200;
+		stroke-dashoffset: -20;
+	}
 	50% {
 		stroke-dasharray: 89, 200;
 		stroke-dashoffset: -35;
+	}
+	75% {
+		stroke-dasharray: 89, 200;
+		stroke-dashoffset: -80;
 	}
 	100% {
 		stroke-dasharray: 89, 200;
@@ -108,17 +122,38 @@ export default {
 @keyframes color {
 	0%,
 	100% {
-		stroke: #222;
+		stroke: #666;
 	}
 	40% {
 		stroke: #333;
 	}
-	66% {
-		stroke: #222;
+	50% {
+		stroke: #111;
+	}
+	60% {
+		stroke: #111;
+	}
+	70% {
+		stroke: #333;
 	}
 	80%,
 	90% {
-		stroke: #111;
+		stroke: #666;
 	}
+
+	/*0%,
+	100% {
+		stroke: #FFD300;
+	}
+	40% {
+		stroke: #5B7492;
+	}
+	66% {
+		stroke: #FFD300;
+	}
+	80%,
+	90% {
+		stroke: #acb9c8;
+	}*/
 }
 </style>
