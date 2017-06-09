@@ -76,9 +76,11 @@ export default {
     .index-bg{
       height: 93vh;
       width: 100%;
-      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
-      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
-      background: -o-linear-gradient(top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+      // background: linear-gradient(top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+
+      background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6));
+      background: -o-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.6));
+      background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
       position: relative;
       .time{
         text-align: right;
@@ -100,7 +102,7 @@ export default {
         }
         .index-forward{
           padding: 5px 0;
-          line-height: 28px;
+          line-height: 24px;
           // font-size: 16px;
         }
       }
