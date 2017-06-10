@@ -1,11 +1,16 @@
 # ONE-demo
 
-* ( [在线预览](http://m.lxms951104.me/) )
+[在线预览](http://m.lxms951104.me/)
 
 ## 声明
 - api来自( [jokermonn](https://github.com/jokermonn/-Api/blob/master/ONEv3.5.0~.md) ), 仅供私下学习参考  
 
 - 接口跨域解决来自JsonBird( [JsonBird](https://bird.ioliu.cn/) )
+
+## 参考
+- webapp版 一个 [http://m.wufazhuce.com/](http://m.wufazhuce.com/)
+- 基于Vue2.0的知乎日报单页应用 [https://github.com/walleeeee/daily-zhihu](https://github.com/walleeeee/daily-zhihu)
+
 
 ## 其它
 > node-sass 安装出错 <br/>
