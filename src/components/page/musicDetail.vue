@@ -1,6 +1,6 @@
 <template>
   <div class="music-detail-box">
-    <v-title>详情 | {{Music.story_title}}</v-title>
+    <v-title>详情 | {{Music.story_title?Music.story_title:'加载中...'}}</v-title>
     <div class="music-box">
       <div class="music-bg-box">
         <div class="music-top-bg" :style="{backgroundImage:'url('+ Music.cover +')'}">

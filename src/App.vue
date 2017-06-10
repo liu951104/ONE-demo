@@ -3,7 +3,7 @@
     <v-title>一个{{barTitle}}</v-title>
     <header class="header">
       <i v-if="!flag" class="o-icon o-icon-menu menu" @click="allToggle()"></i>
-  		<h5>一个{{$route.path == '/one' ? '图文' : barTitle}}</h5>
+  		<h5>一个{{barTitle}}</h5>
   	</header>
     <aside class="aside" :class="{open:open,docked:docked}" @click="allToggle()">
   		<ul>
@@ -36,22 +36,23 @@
 
 <script>
 import api from './api/index'
-
+import { mapState } from 'vuex'
 export default {
   data() {
 		return {
 			list: [],
 			open: false,
 			docked: false,
-      barTitle:'',
+      // barTitle:'',
       flag:false,
       todayId:0,
 			transitionName: 'slide-left'
 		}
 	},
-
-  created(){
-
+  computed: {
+    ...mapState({
+      barTitle : state => state.title
+    })
   },
 	watch: {
     '$route' (to, from) {

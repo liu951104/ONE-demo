@@ -25,10 +25,12 @@ Vue.config.productionTip = false
 
 const store = new Vuex.Store( {
 	state: {
+		title:'',
 		movie:{},
 		detail:{}
 	},
 	mutations: {
+		change: (state, n ) => state.title = n,
 		getobj: ( state, n ) => state.detail = n,
 		getmovie: ( state, n ) => state.movie = n
 	}
@@ -42,3 +44,41 @@ new Vue({
   template: '<App/>',
   ...App
 })
+
+router.beforeEach( ( to, from, next ) => {
+	console.log(to.path)
+	next()
+} )
+router.afterEach( ( to, from, next ) => {
+	console.log("after" + to.path)
+	store.commit( 'change',changeTitle(to.path));
+	// if ( to.path == '/article' ) {
+	// 	dom.scrollTop = 0;
+	// } else {
+	// 	Vue.nextTick( () => {
+	// 		dom.scrollTop = indexScrollTop;
+	// 	} );
+	// }
+} );
+
+function changeTitle(path){
+	switch(path){
+		case '/one':
+			return "图文";
+			break;
+		case '/read':
+			return "阅读";
+			break;
+		case '/music':
+			return "音乐";
+			break;
+		case '/movie':
+			return "电影";
+			break;
+		case '/about':
+			return "关于";
+			break;
+		default:
+			return "";
+	}
+}
