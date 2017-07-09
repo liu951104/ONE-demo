@@ -18,6 +18,8 @@
     <footer-download></footer-download>
     <!-- 加载中 -->
     <loading :loading="loading" />
+
+    <router-view></router-view>
   </div>
 </template>
 

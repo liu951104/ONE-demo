@@ -14,6 +14,10 @@ Vue.component( loading.name, loading )
 Vue.component( scrollMore.name, scrollMore )
 Vue.component('vTitle',Title)
 
+import VueMasonryPlugin from 'vue-masonry';
+
+Vue.use(VueMasonryPlugin)
+
 import moment from 'moment';
 Object.defineProperty(Vue.prototype, '$moment', { value: moment });
 

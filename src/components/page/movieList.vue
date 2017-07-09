@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="movie-box" v-for="(detail,index) in List" @click="toDetail(detail.item_id,index)">
+    <div class="movie-box" v-for="(detail,index) in List" @click="toDetail(detail.item_id,index)" v-if="$route.path != '/movie/movieDetail'">
       <h6 class="movie-tag">- 影视 -</h6>
       <h4 class="movie-title">{{detail.title}}</h4>
       <h5 class="movie-author">文 / {{detail.author.user_name}}</h5>
@@ -16,6 +16,8 @@
 	  <scroll-more :scroller="scroller" :loading="moreLoading" @load="loadMore" />
     <!-- 加载中 -->
     <loading :loading="loading" />
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -66,7 +68,7 @@ export default {
     },
     toDetail(id,idx){
       this.$store.commit('getmovie',this.List[idx]);
-      this.$router.push({ path: 'movieDetail', query: { mid: id}})
+      this.$router.push({ path: '/movie/movieDetail', query: { mid: id}})
     }
 	}
 }

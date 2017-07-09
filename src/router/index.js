@@ -38,12 +38,20 @@ export default new Router({
 			component: resolve => require(['../components/page/musicDetail.vue'], resolve)
 		},
     {
-			path: '/movie',
-			component: resolve => require(['../components/page/movieList.vue'], resolve)
-		},
+  		path: '/movie',
+  		component: function (resolve) {
+          require(['../components/page/movieList.vue'], resolve)
+      },
+      children:[
+      	{
+  				path: 'movieDetail',
+  				component: resolve => require(['../components/page/movieDetail.vue'], resolve)
+  			}
+      ]
+  	},
     {
-			path: '/movieDetail',
-			component: resolve => require(['../components/page/movieDetail.vue'], resolve)
-		}
+      path: '/demo',
+      component: resolve => require(['../components/page/demo.vue'], resolve)
+    }
   ]
 })
