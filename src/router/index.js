@@ -52,6 +52,10 @@ export default new Router({
     {
       path: '/demo',
       component: resolve => require(['../components/page/demo.vue'], resolve)
+    },
+    {
+      path: '/canvas',
+      component: resolve => require(['../components/page/getDemo.vue'], resolve)
     }
   ]
 })

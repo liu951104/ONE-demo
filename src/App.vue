@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <v-title>一个{{barTitle}}</v-title>
-    <header class="header">
+    <header class="header" v-if="$route.path != '/canvas'">
       <i v-if="!flag" class="o-icon o-icon-menu menu" @click="allToggle()"></i>
   		<h5>一个{{barTitle}}</h5>
   	</header>
-    <aside class="aside" :class="{open:open,docked:docked}" @click="allToggle()">
+    <aside class="aside" :class="{open:open,docked:docked}" @click="allToggle()" v-if="$route.path != '/canvas'">
   		<ul>
   			<li @click="change('/one','图文')">
   				<span>图文</span>

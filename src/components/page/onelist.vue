@@ -13,12 +13,14 @@
 	  <scroll-more :scroller="scroller" :loading="moreLoading" @load="loadMore" />
     <!-- 加载中 -->
     <loading :loading="loading" />
+    <show-btn  @btnShow="bool = !bool" :showImg="bool"></show-btn>
   </div>
 </template>
 
 <script>
 import api from '../../api/index'
 import { mapState } from 'vuex'
+import showBtn from '../common/showbtn'
 export default {
   data() {
 		return {
@@ -31,6 +33,7 @@ export default {
       flag:false,
       now:'',
       page:0,
+      bool:true,
       idList:[],
 			transitionName: 'slide-left'
 		}
@@ -45,6 +48,9 @@ export default {
     this.scroller = this.$el
     this.getOneList(0)
 
+  },
+  components:{
+    showBtn
   },
   methods: {
     loadMore(){
