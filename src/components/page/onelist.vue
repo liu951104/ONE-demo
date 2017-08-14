@@ -13,7 +13,7 @@
 	  <scroll-more :scroller="scroller" :loading="moreLoading" @load="loadMore" />
     <!-- 加载中 -->
     <loading :loading="loading" />
-    <show-btn  @btnShow="bool = !bool" :showImg="bool"></show-btn>
+    <show-btn  @btnShow="getBool" :showImg="bool"></show-btn>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
       flag:false,
       now:'',
       page:0,
-      bool:true,
+      bool:false,
       idList:[],
 			transitionName: 'slide-left'
 		}
@@ -53,6 +53,13 @@ export default {
     showBtn
   },
   methods: {
+    /**
+     * 外层调用组件方注册变更方法，将组件内的数据变更，同步到组件外的数据状态
+     * @param  {[type]} val [description]
+     */
+    getBool(val){
+      this.bool = val
+    },
     loadMore(){
       this.moreLoading = true
       this.getOneList(this.page)
@@ -70,7 +77,7 @@ export default {
       })
     },
     toDetail(id,idx){
-      // console.log(id,idx)
+      console.log(id,idx)
       this.$store.commit('getobj',this.List[idx]);
       this.$router.push({ path: 'detail', query: { itemId: id }})
     }

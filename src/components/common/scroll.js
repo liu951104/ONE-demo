@@ -15,7 +15,7 @@ export default {
       
 			if ( !this.scroller ) return
 			this._handleScroll = ( e ) => {
-				console.log(e)
+				// console.log(e)
 				if ( this.onScroll ) this.onScroll() //滑动屏幕回调函数
 			}
 			this.scroller.addEventListener( 'scroll', this._handleScroll )
