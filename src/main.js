@@ -4,8 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import Vuex from 'vuex'
 import axios from 'axios'
-import VueRouter from 'vue-router'
+// import VueRouter from 'vue-router'
 import router from './router'
+import vueScrollBehavior from 'vue-scroll-behavior'
+Vue.use(vueScrollBehavior, { router: router })
 
 import loading from './components/common/loading'
 import scrollMore from './components/common/scrollMore'
@@ -22,7 +24,7 @@ import moment from 'moment';
 Object.defineProperty(Vue.prototype, '$moment', { value: moment });
 
 Vue.use( Vuex )
-Vue.use( VueRouter )
+// Vue.use( VueRouter )
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 

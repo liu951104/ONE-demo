@@ -13,7 +13,7 @@
 	  <scroll-more :scroller="scroller" :loading="moreLoading" @load="loadMore" />
     <!-- 加载中 -->
     <loading :loading="loading" />
-    <show-btn  @btnShow="getBool" :showImg="bool"></show-btn>
+    <!-- <show-btn  @btnShow="getBool" :showImg="bool"></show-btn> -->
   </div>
 </template>
 
